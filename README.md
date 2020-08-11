@@ -8,6 +8,8 @@
   
        terraform init
 
+4. In `variables.tf`, Modify the `vm_count` & `vm_names` as per the requirement. If needed change the `env_tag` and `region` as well. 
+
 4. To validate the template:
 
  
