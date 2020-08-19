@@ -124,7 +124,7 @@ output "tls_private_key" { value = "${tls_private_key.example_ssh.private_key_pe
 # Create virtual machine
 resource "azurerm_linux_virtual_machine" "myterraformvm" {
   count                 = var.vm_count
-  name                  = "myVM${count.index}"
+  name                  = var.vm_names[count.index]
   location              = var.region
   resource_group_name   = azurerm_resource_group.my_rg.name
   network_interface_ids = [azurerm_network_interface.myterraformnic[count.index].id]
@@ -143,7 +143,7 @@ resource "azurerm_linux_virtual_machine" "myterraformvm" {
     version   = "latest"
   }
 
-  computer_name                   = "myvm"
+  computer_name                   = "myvm${count.index}"
   admin_username                  = "azureuser"
   disable_password_authentication = true
 
