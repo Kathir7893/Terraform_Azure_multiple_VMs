@@ -1,0 +1,22 @@
+4th Task:
+---------
+---------
+
+Windows web application troubleshooting in IIS:
+
+Got Service unavailable 503 exception when accessing http://localhost/ in browser
+IIS version: 10
+
+Checked the IIS status in command line
+
+iisreset/status
+Status for IIS Admin Service ( IISADMIN ) : Stopped
+Status for Windows Process Activation Service ( WAS ) : Running
+Status for World Wide Web Publishing Service ( W3SVC ) : Running
+
+Noticed that DefaultAppPool keeps stopping automatically, 
+Changed the process model identity in advanced settings to recommended value to fix this.
+In IIS Manager: Application pools -> DefaultAppPool -> Advanced Settings -> Process Model -> Identity -> ApplicationPoolIdentity
+
+After this, Recycled the application pool tasks
+Then I'm able to access the IIS web page in http://localhost/ successfully
